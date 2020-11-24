@@ -1,0 +1,9 @@
+.navRight{
+    margin: 0.2em;
+    border: 1.5px solid green;
+}
+
+.navRight:hover{
+    border: 1.5px solid black;
+    background-color: lightgreen;
+}
