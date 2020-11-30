@@ -1,30 +1,32 @@
-import React from 'react';
-import 'normalize.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import React from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import { LinkContainer } from "react-router-bootstrap";
+import "./App.css";
+import Routes from "./Routes";
 
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-
-import NavbarComponent from './component/navbar/navbar';
-import LoginComponent from './component/login_signup/login';
-import SignupComponent from './component/login_signup/signup';
-
-class App extends React.Component{
-  render(){
-    return (
-      <React.Fragment>
-        <Router>
-          <NavbarComponent/>
-          <div className="mainDashboard">
-            <Switch>
-              <Route exact path='/login' component={LoginComponent} /> 
-              <Route exact path='/signup' component={SignupComponent} /> 
-            </Switch>
-          </div>
-        </Router>
-      </React.Fragment>
-    );
-  }
+export default function App() {
+  return (
+    <div className="App container py-3">
+      <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
+        <LinkContainer to="/">
+          <Navbar.Brand className="font-weight-bold text-muted">
+            Scratch
+          </Navbar.Brand>
+        </LinkContainer>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Nav activeKey={window.location.pathname}>
+            <LinkContainer to="/signup">
+              <Nav.Link>Signup</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/login">
+              <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      <Routes />
+    </div>
+  );
 }
-
-export default App;
